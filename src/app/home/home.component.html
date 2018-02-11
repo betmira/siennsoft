@@ -1,0 +1,9 @@
+<div *ngIf="auth.isAuthenticate()">
+  <h4>You are logged in!</h4>
+
+  <h3>About Your Access Token</h3>
+  <p>Your <code>access_token</code> has an expiry date of: {{ expiresAt | date:'medium' }}</p>
+</div>
+<h4 *ngIf="!auth.isAuthenticate()">
+  You are not logged in! Please Log In to continue.
+</h4>

@@ -1,0 +1,25 @@
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="alert alert-danger" *ngIf="authenticationError" >
+      <strong>Failed to sign in!</strong> Please check your credentials and try again.
+    </div>
+  </div>
+  <div class="col-md-8">
+    <form *ngIf="loginForm" [formGroup]="loginForm"  class="form" (ngSubmit)="loginFun(loginForm)">
+      <div class="form-group">
+        <label for="username" >Login</label>
+        <input class="form-control" type="text" formControlName="username" id="username">
+        <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched"
+              class="help-block"> Please Enter Login (Minimum 2 Characters)</span>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" formControlName="password">
+        <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched"
+              class="help-block"> Please Enter Password (Minimum 2 Characters)</span>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" >Sign in</button>
+    </form>
+  </div>
+</div>
